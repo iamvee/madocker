@@ -1,5 +1,6 @@
 FROM ubuntu:latest
-RUN apt update && apt install openssh-server
-RUN systemctl start ssh
-COPY ./keys/authorized_keys /root/.ssh
+RUN apt update && apt install openssh-server -y
+COPY ./keys/authorized_keys /root/.ssh/authorized_keys
+
 EXPOSE 22
+RUN service ssh start
